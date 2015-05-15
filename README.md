@@ -18,7 +18,7 @@ $ sudo ./install
     ----------------------------------------------------------------------
     Libraries have been installed in:
        /home/zhanghe/cphalcon/build/32bits/modules
-
+    
     If you ever happen to want to link against installed libraries
     in a given directory, LIBDIR, you must either use libtool, and
     specify the full pathname of the library, or use the `-LLIBDIR'
@@ -29,17 +29,17 @@ $ sudo ./install
          during linking
        - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
        - have your system administrator add LIBDIR to `/etc/ld.so.conf'
-
+    
     See any operating system documentation about shared libraries for
     more information, such as the ld(1) and ld.so(8) manual pages.
     ----------------------------------------------------------------------
-
+    
     Build complete.
     Don't forget to run 'make test'.
-
+    
     Installing shared extensions:     /usr/lib/php5/20121212+lfs/
     Installing header files:          /usr/include/php5/
-
+    
     Thanks for compiling Phalcon!
     Build succeed: Please restart your web server to complete the installation
 ```
@@ -70,9 +70,11 @@ $ sudo service php5-fpm restart
 参考文档：
 <http://docs.phalconphp.com/zh/latest/reference/tools.html>
 
-使用
-
+工具使用方法
+```
 $ ~/phalcon-devtools-master/phalcon.php commands
+```
+
 ```
 Phalcon DevTools (2.0.0)
 
@@ -87,12 +89,15 @@ Available commands:
   webtools (alias of: create-webtools)
 ```
 
+为工具添加软链
+```
 $ sudo ln -s ~/phalcon-devtools-master/phalcon.php /usr/bin/phalcon
 $ chmod ugo+x /usr/bin/phalcon
-
-测试
-
+```
+测试工具效果
+```
 $ phalcon commands
+```
 
 ```
 Phalcon DevTools (2.0.0)
@@ -123,8 +128,10 @@ External Libraries >> Configure PHP Include Paths...
 
 ## Phalcon开发工具创建应用
 
+创建新项目
+```
 $ phalcon project phalcon --type=simple --enable-webtools
-
+```
 配置数据库参数
 
 /home/zhanghe/code/php/phalcon/app/config/config.php
@@ -140,6 +147,7 @@ $ phalcon project phalcon --type=simple --enable-webtools
 ```
 
 修改配置文件
+
 /home/zhanghe/code/php/phalcon/app/config/config.php
 ```
 'baseUri'        => '/phalcon/'
@@ -148,6 +156,7 @@ $ phalcon project phalcon --type=simple --enable-webtools
 ```
 
 BUG修复
+
 /home/zhanghe/code/php/phalcon/app/config/services.php
 ```
 $di->set('db', function () use ($config) {
