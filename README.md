@@ -4,10 +4,11 @@
 <http://docs.phalconphp.com/zh/latest/index.html>
 
 安装
+```
 $ git clone --depth=1 git://github.com/phalcon/cphalcon.git
 $ cd cphalcon/build
 $ sudo ./install
-
+```
 成功后大致如下信息：
 ```
     /bin/bash /home/zhanghe/cphalcon/build/32bits/libtool --mode=install cp ./phalcon.la /home/zhanghe/cphalcon/build/32bits/modules
@@ -44,14 +45,22 @@ $ sudo ./install
 ```
 
 
+为扩展添加软链
+```
 $ ln -s /home/zhanghe/cphalcon/build/32bits/modules/phalcon.so /usr/local/lib/phalcon.so
-
+```
+创建扩展文件
+```
 $ sudo vim /etc/php5/fpm/conf.d/phalcon.ini
-
+```
+添加扩展
+```
 extension=phalcon.so
-
+```
+重启php
+```
 $ sudo service php5-fpm restart
-
+```
 
 ##Phalcon开发工具的安装
 
@@ -62,6 +71,7 @@ $ sudo service php5-fpm restart
 <http://docs.phalconphp.com/zh/latest/reference/tools.html>
 
 使用
+
 $ ~/phalcon-devtools-master/phalcon.php commands
 ```
 Phalcon DevTools (2.0.0)
@@ -81,7 +91,9 @@ $ sudo ln -s ~/phalcon-devtools-master/phalcon.php /usr/bin/phalcon
 $ chmod ugo+x /usr/bin/phalcon
 
 测试
+
 $ phalcon commands
+
 ```
 Phalcon DevTools (2.0.0)
 
@@ -99,9 +111,13 @@ Available commands:
 配置PhpStorm的Phalcon代码提示扩展
 
 External Libraries >> Configure PHP Include Paths...
+
 点击Include Path 右侧的加号（+）
+
 输入：
+
 /home/zhanghe/phalcon-devtools-master/ide/2.0.0
+
 应用，保存
 
 
@@ -110,6 +126,7 @@ External Libraries >> Configure PHP Include Paths...
 $ phalcon project phalcon --type=simple --enable-webtools
 
 配置数据库参数
+
 /home/zhanghe/code/php/phalcon/app/config/config.php
 ```
 'database' => array(
@@ -143,20 +160,24 @@ $di->set('db', function () use ($config) {
 ```
 
 进入项目目录
+```
 $ cd phalcon
-
+```
 为cache目录增加权限
+```
 $ cd app
 $ chmod 777 -R cache/
-
+```
 创建nginx配置文件
 
 参考<http://docs.phalconphp.com/zh/latest/reference/nginx.html>
 
-$ touch ~/my_php_code/my_php_code.conf
-$ subl ~/my_php_code/my_php_code.conf
+```
+$ touch ~/code/php/phalcon/phalcon.conf
+$ subl ~/code/php/phalcon/phalcon.conf
+```
 
-
+配置信息大致如下：
 ```
 server {
 	listen   80;
@@ -182,11 +203,15 @@ server {
 }
 ```
 
+为nginx文件添加软链
+```
 $ sudo ln -s ~/code/php/phalcon/phalcon.conf /etc/nginx/sites-enabled/phalcon.conf
 $ sudo nginx -s reload
-
+```
 配置host文件
+```
 $ sudo subl /etc/hosts
+```
 添加(注意，域名不能有下划线)
 ```
 127.0.0.1 phalcon
@@ -194,10 +219,13 @@ $ sudo subl /etc/hosts
 
 
 创建控制器
+```
 $ cd ~/code/php/phalcon
 $ phalcon controller test
-
+```
 创建模型
+```
 $ phalcon model user
+```
 
 
