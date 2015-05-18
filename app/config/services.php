@@ -2,6 +2,7 @@
 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\View;
+use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
@@ -72,4 +73,23 @@ $di->setShared('session', function () {
     $session->start();
 
     return $session;
+});
+
+/**
+ * add routing capabilities
+ * 参考：http://docs.phalconphp.com/zh/latest/reference/routing.html#defining-routes
+ */
+$di->set('router', function(){
+    $router = new \Phalcon\Mvc\Router();
+    //设置默认路由(如果同nginx，可以不用设置)
+    $router->add("/", array(
+        'controller' => 'index',
+        'action' => 'index'
+    ));
+    //Set 404 paths
+    $router->notFound(array(
+        "controller" => "index",
+        "action" => "route404"
+    ));
+    return $router;
 });

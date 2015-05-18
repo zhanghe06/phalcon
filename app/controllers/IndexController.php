@@ -42,5 +42,11 @@ class IndexController extends ControllerBase
         die;
     }
 
+    public function route404Action()
+    {
+        echo '404';
+        die;
+    }
+
 }
 
