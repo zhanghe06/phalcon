@@ -47,10 +47,7 @@ $ sudo /etc/init.d/tomcat7 restart 或 sudo service tomcat7 restart
 Tomcat的用户帐号信息都保存在tomcat-users.xml的文件中，运行
 ```
 $ sudo subl /var/lib/tomcat7/conf/tomcat-users.xml
-```
-
 在<tomcat-users>...</tomcat-users>的标签之间添加一行
-```
 <user username="用户名" password="密码" roles="admin,manager"/>
 ```
 
