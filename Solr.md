@@ -42,7 +42,7 @@ $ sudo /etc/init.d/tomcat7 stop 或 sudo service tomcat7 stop
 $ sudo /etc/init.d/tomcat7 restart 或 sudo service tomcat7 restart
 ```
 
-设置Tomcat管理员帐号
+设置Tomcat管理员帐（非必需）
 
 Tomcat的用户帐号信息都保存在tomcat-users.xml的文件中，运行
 ```
@@ -50,8 +50,16 @@ $ sudo subl /var/lib/tomcat7/conf/tomcat-users.xml
 在<tomcat-users>...</tomcat-users>的标签之间添加一行
 <user username="用户名" password="密码" roles="admin,manager"/>
 ```
-
 保存并关闭。重新运行tomcat即可输入该用户名和密码，登录Tomcat的管理页面。
+
+
+solr下载页面
+<http://mirrors.cnnic.cn/apache/lucene/solr/5.1.0/>
+
+这里选择：
+<http://mirrors.cnnic.cn/apache/lucene/solr/5.1.0/solr-5.1.0.zip>
+
+下载后解压到当前用户home目录中
 
 将solr目录下的webapps/solr.war复制到tomcat的webapps目录中，并重启服务
 ```
