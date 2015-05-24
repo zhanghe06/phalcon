@@ -93,3 +93,16 @@ $di->set('router', function(){
     ));
     return $router;
 });
+
+/**
+ * 配置对称加密服务（Setting up an Encryption service）
+ */
+$di->set('crypt', function() {
+
+    $crypt = new Phalcon\Crypt();
+
+    //设置全局加密密钥
+    $crypt->setKey('%31.1e$i86e$f!8jz');
+
+    return $crypt;
+}, true);

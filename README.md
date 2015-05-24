@@ -238,3 +238,9 @@ $ phalcon model user
 ```
 
 
+##安装启动MCrypt PHP Extension
+```
+$ sudo apt-get install php5-mcrypt
+$ sudo php5enmod mcrypt
+$ sudo service php5-fpm restart
+```

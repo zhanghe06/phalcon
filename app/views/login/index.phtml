@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <?php echo $this->tag->javascriptInclude("js/jquery/jquery.min.js") ?>
+    <?php echo $this->tag->javascriptInclude("js/js_encrypt.js") ?>
+    <title>加密解密-登录测试</title>
+</head>
+<body>
+<form id="login_form" action="/login/dologin" method="post">
+
+    <label for="email_text">Username/Email</label>
+    <input type="text" id="email_text" value="" size="30" />
+    <input type="hidden" id="email" name="email" />
+
+    <label for="password_text">Password</label>
+    <input type="password" id="password_text" value="" size="30" />
+    <input type="hidden" id="password" name="password" />
+    <input type="button" id="login_button" value="Login" />
+
+</form>
+<script type="text/javascript">
+    $('#login_button').click(function () {
+        var public_key = '-----BEGIN PUBLIC KEY-----\
+            MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDKTouc1nODkSyksshf3sTDl2E7\
+            enj7CsDwdPpJX6bIbteraXV9gd99xSa62o9l7W+0t8SPJE4A5CGdSU7LZE7yxQbP\
+            +tmGU4SkrvoIfJo3wEU5jDLRvgGUCLRAbJTOI7E4WvBwCX69WjQ4Y8xXh7J2F6Bu\
+            klsL31XBW+8gTHiv9QIDAQAB\
+            -----END PUBLIC KEY-----';
+        var crypt = new JSEncrypt();
+        var email = $('#email_text').val();
+        var password = $('#password_text').val();
+        crypt.setPublicKey(public_key);
+        $('#email').val(crypt.encrypt(email));
+        $('#password').val(crypt.encrypt(password));
+        $('#login_form').submit();
+    });
+</script>
+</body>
+</html>
+
