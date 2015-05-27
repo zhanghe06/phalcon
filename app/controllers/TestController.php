@@ -43,5 +43,13 @@ class TestController extends \Phalcon\Mvc\Controller
             }
         }
     }
+
+    public function redisAction()
+    {
+        $redis = new Redis();
+        $redis->connect( '127.0.0.1', $port = 6379);
+        echo 'Server is running: '. $redis->ping();
+        die;
+    }
 }
 
