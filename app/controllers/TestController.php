@@ -7,7 +7,10 @@ class TestController extends \Phalcon\Mvc\Controller
     {
         echo 'Test';
         $aa = file_get_contents('/home/zhanghe/code/php/phalcon/app/library/rsa_1024_pub.pem');
-        echo $aa;
+        echo $aa.'<br/>';
+        echo Tools::formatDate().'<br/>';
+        echo Tools::realIp().'<br/>';
+        //echo Tools::validateLogin().'<br/>';
         die;
     }
 

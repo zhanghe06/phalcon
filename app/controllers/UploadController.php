@@ -65,7 +65,7 @@ class UploadController extends ControllerBase
         }
         echo '文件名称：' . $_FILES["file"]["name"];
         echo '文件类型：' . $_FILES["file"]["type"];
-        echo '文件大小：' . Tools::byte_format($_FILES["file"]["size"]);
+        echo '文件大小：' . Tools::formatByte($_FILES["file"]["size"]);
         //保存文件
         move_uploaded_file($_FILES["file"]["tmp_name"], "files/" . $_FILES["file"]["name"]);
         echo "文件上传路径：" . "files/" . $_FILES["file"]["name"];
