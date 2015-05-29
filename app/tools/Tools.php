@@ -35,7 +35,7 @@ class Tools
      * @param $time '时间戳'
      * @return bool|string
      */
-    public static function formatDate($time)
+    public static function formatDate($time=null)
     {
         $date = is_null($time) ? date('Y-m-d H:i:s', time()) : date('Y-m-d H:i:s', $time);
         return $date;
