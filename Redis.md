@@ -55,3 +55,8 @@ Installing shared extensions:     /usr/lib/php5/20121212+lfs/
 $ sudo subl /etc/php5/fpm/conf.d/redis.ini
 extension=redis.so
 ```
+
+重启php服务
+```
+$ sudo service php5-fpm restart
+```
