@@ -5,18 +5,21 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        //分页处理
-        $currentPage = (int)$_GET["page"];
-        //处理最小页数
-        $currentPage = $currentPage <= 0 ? 1 : $currentPage;
-        $pageNumber = 5;
-        $offset = ($currentPage - 1) * $pageNumber;
+        header("Content-type: text/html; charset=utf-8");
         //查询条件
         $condition = '';
         $count = User::count($condition);
+
+        //分页处理
+        $pageNumber = 5;
+        $currentPage = (int)$_GET["page"];
+        //处理最小页数
+        $currentPage = $currentPage <= 0 ? 1 : $currentPage;
         //处理最大页数
         $maxPage = ceil($count / $pageNumber);
-        $offset = $currentPage > $maxPage ? ($maxPage - 1) * $pageNumber : $offset;
+        $currentPage = $currentPage > $maxPage ? $maxPage : $currentPage;
+
+        $offset = ($currentPage - 1) * $pageNumber;
         //上一页下一页
         $prePage = ($currentPage - 1) <= 0 ? 1 : ($currentPage - 1);
         $nextPage = ($currentPage + 1) > $maxPage ? $maxPage : ($currentPage + 1);
