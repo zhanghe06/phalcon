@@ -49,9 +49,65 @@ class TestController extends \Phalcon\Mvc\Controller
 
     public function redisAction()
     {
-        $redis = new Redis();
-        $redis->connect( '127.0.0.1', $port = 6379);
-        echo 'Server is running: '. $redis->ping();
+        header("Content-type: text/html; charset=utf-8");
+        $redis = $this->di->getShared('redis');
+        echo 'Server is running: '. $redis->ping().'<br/>';
+        echo $redis->keys('*').'<br/>';
+        $uid = 2;
+        $pid = 5;
+        $num = 3;
+        $pName = '产品'.$pid;
+        $price = 128.00;
+
+        $key = "cart:$uid:$pid";
+        //初次加入物品
+        $redis->hMSet($key,
+            array(
+                'pid' => $pid,
+                'num' => $num,
+                'pName' => $pName,
+                'price' => $price,
+            )
+        );
+        var_dump( $redis->hGetAll($key) );
+        echo '<br/>';
+        var_dump( $redis->hExists($key, 'pid') );
+        echo '<br/>';
+        //判断购物车中是否存在此商品
+        if($redis->exists($key)){
+            $redis->hIncrBy($key, 'num', $num);
+        }
+        var_dump( $redis->hGetAll($key) );
+        echo '<br/>';
+        $key = "cart:$uid:*";
+        var_dump($redis->keys($key));
+        die;
+    }
+
+    public function cartAction()
+    {
+        header("Content-type: text/html; charset=utf-8");
+        $uid = 2;
+        $pid = 4;
+        $num = 4;
+        $cart = new Cart();
+        var_dump($cart);
+        $cart->Add($uid, $pid);
+        $data = $cart->cartList($uid);
+        var_dump($data);
+        echo "<br/>".'---------新增：';
+        $cart->Increase($uid, $pid, 10);
+        $data = $cart->cartList($uid);
+        var_dump($data);
+        echo "<br/>".'---------减少：';
+        $cart->Decrease($uid, $pid, 12);
+        $data = $cart->cartList($uid);
+        var_dump($data);
+        echo "<br/>".'---------重复添加：';
+        $cart->Add($uid, $pid);
+        $data = $cart->cartList($uid);
+        var_dump($data);
+
         die;
     }
 }
