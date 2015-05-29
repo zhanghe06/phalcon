@@ -19,5 +19,9 @@ return new \Phalcon\Config(array(
         'toolsDir'       => __DIR__ . '/../../app/tools/',
         'cacheDir'       => __DIR__ . '/../../app/cache/',
         'baseUri'        => '/',
+    ),
+    'redis' => array(
+        'host' => '127.0.0.1',
+        'port' => '6379'
     )
 ));

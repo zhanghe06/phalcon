@@ -106,3 +106,14 @@ $di->set('crypt', function() {
 
     return $crypt;
 }, true);
+
+/**
+ * Redis connection is created based in the parameters defined in the configuration file
+ */
+$di->set('redis', function () use ($config) {
+    $host = $config->redis->host;
+    $port = $config->redis->port;
+    $redis = new Redis();
+    $redis->connect($host, $port);
+    return $redis;
+});
