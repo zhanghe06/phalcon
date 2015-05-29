@@ -39,10 +39,14 @@ class UploadController extends ControllerBase
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  //docx
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',  //xlsx
             'application/vnd.openxmlformats-officedocument.presentationml.presentation',  //pptx
+            //常用压缩文档格式
+            'application/octet-stream',  //rar
+            'application/x-zip-compressed',  //zip
+            'application/x-7z-compressed',  //7-Zip
         );
         //确定文件大小
         $fileMinSize = 0;
-        $fileMaxSize = 20000;
+        $fileMaxSize = 1024 * 1024 * 2;
         //判断是否存在上传文件
         if (empty($_FILES['file']['tmp_name'])) {
             echo '上传文件为空';
