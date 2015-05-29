@@ -43,6 +43,9 @@ class Tools
 
     /**
      * 计算时间差
+     * 使用方法：
+     * $time_diff = Tools::timeDiff('2014-06-07', '2015-06-09');
+     * var_dump($time_diff);
      * @param $start
      * @param $end
      * @param string $type
@@ -180,5 +183,53 @@ class Tools
         }
     }
 
+    /**
+     * 分页处理
+     * @param int $count 记录总数
+     * @param int $pageNumber 单页显示数量
+     * @param int $currentPage 当前页码
+     * @param string $type 返回参数类型
+     * @return array|paginationResult
+     */
+    public static function pagination($count, $pageNumber, $currentPage, $type='object')
+    {
+        //处理最小页数
+        $currentPage = $currentPage <= 0 ? 1 : $currentPage;
+        //处理最大页数
+        $maxPage = ceil($count / $pageNumber);
+        $currentPage = $currentPage > $maxPage ? $maxPage : $currentPage;
+        //分页偏移量
+        $offset = ($currentPage - 1) * $pageNumber;
+        //上一页下一页
+        $prePage = ($currentPage - 1) <= 0 ? 1 : ($currentPage - 1);
+        $nextPage = ($currentPage + 1) > $maxPage ? $maxPage : ($currentPage + 1);
+        //返回数组格式
+        if($type == 'array') {
+            return array(
+                'offset' => $offset,
+                'prePage' => $prePage,
+                'nextPage' => $nextPage,
+                'maxPage' => $maxPage
+            );
+        }
+        //默认返回对象格式
+        $result = new paginationResult();
+        $result->offset = $offset;
+        $result->prePage = $prePage;
+        $result->nextPage = $nextPage;
+        $result->maxPage = $maxPage;
+        return $result;
+    }
+}
 
+/**
+ * 定义分页处理返回结果对象结构
+ * Class paginationResult
+ */
+class paginationResult
+{
+    public $offset;  //偏移量
+    public $prePage;  //上一页页码
+    public $nextPage;  //下一页页码
+    public $maxPage;  //最大页数
 }
