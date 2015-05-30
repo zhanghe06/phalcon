@@ -20,7 +20,7 @@ class Cart extends \Phalcon\Di\Injectable
      * @param $uid
      * @param string $Prefix
      */
-    public function __construct($uid, $Prefix='cart')
+    public function __construct($uid, $Prefix = 'cart')
     {
         $this->uid = $uid;
         $this->Prefix = $Prefix;
@@ -117,7 +117,7 @@ class Cart extends \Phalcon\Di\Injectable
         $key = "$this->Prefix:$this->uid:*";
         $cartKeyList = $redis->keys($key);
         $cart = array();
-        foreach($cartKeyList as $item){
+        foreach ($cartKeyList as $item) {
             $cart[] = $redis->hGetAll($item);
         }
         return $cart;
