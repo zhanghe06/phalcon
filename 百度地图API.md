@@ -42,3 +42,23 @@
     map.addEventListener("click", showInfo);
 </script>
 ```
+
+根据地址获取坐标：
+```
+<script type="text/javascript">
+	// 实例化百度地图
+	var map = new BMap.Map("allmap");
+	// 创建地址解析器实例
+	var myGeo = new BMap.Geocoder();
+	// 将地址解析结果显示在地图上,并调整地图视野
+	myGeo.getPoint("上海市黄浦区延安东路700号", function(point){
+		if (point) {
+			map.centerAndZoom(point, 16);
+			map.addOverlay(new BMap.Marker(point));
+			alert(point.lng + ", " + point.lat);
+		}else{
+			alert("您选择地址没有解析到结果!");
+		}
+	});
+</script>
+```
