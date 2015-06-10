@@ -14,6 +14,21 @@
 class Tools
 {
     /**
+     * 合并两组key相同的二维关联数组
+     * @param $array_01
+     * @param $array_02
+     * @return array
+     */
+    public static function dyadicArrayMerge($array_01, $array_02){
+        $lists = array();
+        foreach($array_01 as $key=>$value){
+            $item = array_merge($value, $array_02[$key]);
+            $lists[$key] = $item;
+        }
+        return $lists;
+    }
+    
+    /**
      * 格式化显示文件大小
      * @param $size
      * @param int $dec
