@@ -131,5 +131,19 @@ class TestController extends \Phalcon\Mvc\Controller
 
         $this->view->disable();
     }
+
+    public function ajaxAction()
+    {
+        if($this->request->isAjax()){
+            echo '这是一个ajax请求';
+            $this->view->disable();
+        }
+        if($this->request->isPost()){
+            //暂停 3 秒
+            //sleep(3);
+            echo '这是一个post请求';
+            $this->view->disable();
+        }
+    }
 }
 
