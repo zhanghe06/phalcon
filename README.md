@@ -244,3 +244,10 @@ $ sudo apt-get install php5-mcrypt
 $ sudo php5enmod mcrypt
 $ sudo service php5-fpm restart
 ```
+
+
+##PhpStrom设置volt模板语法高亮
+```
+File->Settings->File Types->Twig
+添加 *.volt
+```
