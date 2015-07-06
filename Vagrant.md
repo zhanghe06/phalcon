@@ -7,7 +7,7 @@ $ vagrant box list
 
 删除
 ```
-$ vagrant destory
+$ vagrant destroy
 ```
 
 添加
