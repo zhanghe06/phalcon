@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    {{ javascript_include("js/jquery/jquery.min.js") }}
+    {{ javascript_include("js/jquery/jquery-1.10.2.min.js") }}
     <script type="text/javascript">
         $(document).ready(function () {
             $("#b01").click(function () {
