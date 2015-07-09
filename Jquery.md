@@ -5,7 +5,7 @@
 
 解决办法：
 下载 [jquery-1.10.2.min.map](https://code.jquery.com/jquery-1.10.2.min.map "jquery-1.10.2.min.map") 文件
-与jquery-1.10.2.min.js放在同级目录
+与 [jquery-1.10.2.min.js](https://code.jquery.com/jquery-1.10.2.min.js "jquery-1.10.2.min.js") 放在同级目录
 
 给map文件设置权限
 
