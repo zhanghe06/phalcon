@@ -251,3 +251,17 @@ $ sudo service php5-fpm restart
 File->Settings->File Types->Twig
 添加 *.volt
 ```
+
+##phalcon常用文档
+
+标签
+[https://docs.phalconphp.com/zh/latest/reference/tags.html](https://docs.phalconphp.com/zh/latest/reference/tags.html "标签")
+
+视图
+[https://docs.phalconphp.com/zh/latest/reference/views.html](https://docs.phalconphp.com/zh/latest/reference/views.html "视图")
+
+视图助手
+[https://docs.phalconphp.com/zh/latest/reference/tags.html](https://docs.phalconphp.com/zh/latest/reference/tags.html "视图助手")
+
+缓存
+[https://docs.phalconphp.com/zh/latest/reference/models-cache.html](https://docs.phalconphp.com/zh/latest/reference/models-cache.html "缓存")
