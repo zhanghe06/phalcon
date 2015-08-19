@@ -191,9 +191,10 @@ class Tools
     /**
      * 列出当前目录下的所有文件
      * @param $dir
+     * @param bool $full_path
      * @return array
      */
-    public static function listDir($dir)
+    public static function listDir($dir, $full_path=false)
     {
         $fileList = array();
         if(is_dir($dir))
@@ -204,14 +205,22 @@ class Tools
                 {
                     if((is_dir($dir."/".$file)) && $file!="." && $file!="..")
                     {
-                        $fileList[] = $file;
+                        if($full_path){
+                            $fileList[] = rtrim($dir, '/')."/".$file;
+                        }else{
+                            $fileList[] = $file;
+                        }
                         listDir($dir."/".$file."/");
                     }
                     else
                     {
                         if($file!="." && $file!="..")
                         {
-                            $fileList[] = $file;
+                            if($full_path){
+                                $fileList[] = rtrim($dir, '/')."/".$file;
+                            }else{
+                                $fileList[] = $file;
+                            }
                         }
                     }
                 }
