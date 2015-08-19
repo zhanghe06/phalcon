@@ -189,6 +189,39 @@ class Tools
     }
 
     /**
+     * 列出当前目录下的所有文件
+     * @param $dir
+     * @return array
+     */
+    public static function listDir($dir)
+    {
+        $fileList = array();
+        if(is_dir($dir))
+        {
+            if ($dh = opendir($dir))
+            {
+                while (($file = readdir($dh)) !== false)
+                {
+                    if((is_dir($dir."/".$file)) && $file!="." && $file!="..")
+                    {
+                        $fileList[] = $file;
+                        listDir($dir."/".$file."/");
+                    }
+                    else
+                    {
+                        if($file!="." && $file!="..")
+                        {
+                            $fileList[] = $file;
+                        }
+                    }
+                }
+                closedir($dh);
+            }
+        }
+        return $fileList;
+    }
+
+    /**
      * 验证登陆
      */
     public static function validateLogin()
