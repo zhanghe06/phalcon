@@ -36,3 +36,10 @@ SELECT Customer,SUM(OrderPrice) FROM Orders GROUP BY Customer HAVING SUM(OrderPr
 ```
 SELECT TRIM(IF(address is null,'',address)) FROM user_detail;
 ```
+
+查询列表中某字段最大的一条记录
+```
+SELECT A.* FROM user_info A,
+(SELECT id, MAX(day) max_day FROM user_info GROUP BY id) B
+WHERE A.id = B.id AND A.day = B.max_day;
+```
