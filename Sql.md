@@ -1,6 +1,7 @@
 ## SQL语句的高级用法
 
 拼接两个字段
+（SQL Server 连接字符串是用“+”，mysql里的“+”是数字相加的操作，连接字符串是CONCAT函数）
 ```
 SELECT trim(BOTH ';' FROM concat(phone,';',mobile)) FROM user_info;
 ```
