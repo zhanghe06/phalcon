@@ -31,3 +31,8 @@ SELECT ProductName, UnitPrice, FORMAT(Now(),'YYYY-MM-DD') as PerDate FROM Produc
 ```
 SELECT Customer,SUM(OrderPrice) FROM Orders GROUP BY Customer HAVING SUM(OrderPrice)<2000
 ```
+
+查询用户的详细地址，并将null转为空串
+```
+SELECT TRIM(IF(address is null,'',address)) FROM user_detail;
+```
