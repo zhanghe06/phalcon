@@ -1,5 +1,7 @@
 <?php
 
+use Phalcon\Mvc\Model;
+
 class TestController extends \Phalcon\Mvc\Controller
 {
 
@@ -143,6 +145,49 @@ class TestController extends \Phalcon\Mvc\Controller
             //sleep(3);
             echo '这是一个post请求';
             $this->view->disable();
+        }
+    }
+
+    public function testCountAction()
+    {
+        // http://phalcon/test/testCount
+        // 测试记录为空的情况
+        $order_list_find = Orderlist::find(array('id > 0', 'limit' => 100));
+        $order_list_find_first = Orderlist::findFirst('id = 1');
+        // bool(false) int(0) bool(false) int(0) bool(false) string(1) "0"
+        var_dump(!$order_list_find);  // 错误用法 bool(false)
+        var_dump(count($order_list_find));  // 正确用法 int(0)
+        var_dump(empty($order_list_find));  // 错误用法 bool(false)
+        var_dump($order_list_find->count());  // int(0)
+        var_dump($order_list_find_first);  // 无结果返回 bool(false)
+        var_dump(Orderlist::count());  // string(1) "0"
+
+        echo "<p/>";
+
+        // 测试记录不为空的情况
+        $user_find = User::find(array('id > 0', 'limit' => 100));
+        $user_find_first = User::findFirst('id = 1');
+
+        var_dump(!$user_find);  // 错误用法 bool(false)
+        var_dump(count($user_find));  // 正确用法 int(29)
+        var_dump($user_find->count());  // int(29)
+         var_dump(!$user_find_first);  // bool(false) $user_find_first有结果返回 对象
+        var_dump($user_find_first->count());  // string(2) "29"
+        var_dump(User::count());  // string(2) "29"
+
+        // 总结
+        // Find 记录判断用法
+        if (!count($result_find)) {
+            // 如果没有记录...
+        }else{
+            // ...
+        }
+
+        // FindFirst 记录判断用法
+        if (!$result_find_first) {
+            // 如果没有记录...
+        }else{
+            // ...
         }
     }
 }
