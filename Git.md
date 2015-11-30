@@ -55,6 +55,17 @@ $ git reset --hard a2348a50c801bc3b2ecdb3a463b1f24da1d8cd47
 HEAD 最近一个提交
 HEAD^ 上一次
 ```
+如果commit错误的信息
+修改最后一次commit信息
+```
+$ git commit --amend -m "New commit message"
+```
+
+如果push错误的信息到远程分支
+用本地代码覆盖远程分支(慎用，如果远程分支有提交，这部分会丢失)
+```
+$ git push <remote> <branch> -f
+```
 
 ##git乱码的解决办法
 ```
