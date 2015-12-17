@@ -30,6 +30,36 @@ $ redis-cli
 $ redis-cli -h 192.168.2.184
 ```
 
+3.0最新稳定版安装记录
+```
+$ wget http://download.redis.io/releases/redis-3.0.5.tar.gz
+$ tar xzf redis-3.0.5.tar.gz
+$ cd redis-3.0.5
+$ make
+```
+
+启动服务
+```
+$ src/redis-server
+```
+
+开启客户端
+```
+$ src/redis-cli
+```
+
+配置软链
+```
+$ sudo ln -s /home/zhanghe/redis-3.0.5/src/redis-server /usr/bin/redis-server
+$ sudo ln -s /home/zhanghe/redis-3.0.5/src/redis-cli /usr/bin/redis-cli
+```
+
+设置开机启动
+```
+$ echo "/usr/bin/redis-server /home/zhanghe/redis-3.0.5/redis.conf > /dev/null &" >> /etc/rc.local
+```
+
+
 ##phpRedis扩展
 
 <https://github.com/owlient/phpredis>已停止维护
