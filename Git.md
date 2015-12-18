@@ -29,6 +29,18 @@ $ make prefix=/usr/local all
 $ sudo make prefix=/usr/local install
 ```
 
+全局身份配置
+```
+$ git config --global user.name "Your Name"
+$ git config --global user.email "youremail@domain.com"
+```
+
+查看配置
+```
+$ git config --list
+$ vi ~/.gitconfig
+```
+
 ##git基本使用
 
 详见教程，这里省略……
