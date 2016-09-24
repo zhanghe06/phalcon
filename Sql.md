@@ -43,3 +43,18 @@ SELECT A.* FROM user_info A,
 (SELECT id, MAX(day) max_day FROM user_info GROUP BY id) B
 WHERE A.id = B.id AND A.day = B.max_day;
 ```
+
+获取分组后的明细
+```
+SELECT
+    GROUP_CONCAT(product_id),
+    COUNT(product_id) AS product_qty,
+    SUM(amount) AS order_amount
+FROM
+    order_items
+WHERE
+    pay_date = '2016-09-21'
+GROUP BY order_id
+HAVING product_qty > 1
+ORDER BY order_amount DESC;
+```
