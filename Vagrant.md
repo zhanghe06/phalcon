@@ -1,4 +1,13 @@
-## Vagrant使用常用命令
+## Vagrant 安装
+
+```
+$ sudo apt-get install vagrant
+```
+
+最新版下载连接：[https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
+
+
+## Vagrant 常用命令
 
 查看
 ```
@@ -28,6 +37,8 @@ $ sudo subl Vagrantfile
 启动
 ```
 $ vagrant up --provider=virtualbox
+or
+$ vagrant up
 ```
 
 关闭
