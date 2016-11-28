@@ -44,3 +44,24 @@ $ php -a
 php -i | grep ini
 ```
 
+## 参数优化
+
+默认参数:
+```
+post_max_size => 8M
+upload_max_filesize => 2M
+max_file_uploads => 20
+memory_limit => 128M
+max_execution_time => 0
+```
+
+修改文件上传大小限制, 需要配合修改 Nginx 配置
+```
+# nginx.conf
+client_max_body_size 16m;
+# php.ini
+post_max_size => 16M
+upload_max_filesize => 16M
+```
+
+重启 nginx 和 php
