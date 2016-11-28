@@ -265,3 +265,67 @@ File->Settings->File Types->Twig
 
 缓存
 [https://docs.phalconphp.com/zh/latest/reference/models-cache.html](https://docs.phalconphp.com/zh/latest/reference/models-cache.html "缓存")
+
+
+## Mac 下安装
+
+确认 php 版本
+```
+php -v
+PHP 5.6.27
+```
+
+更新 brew 并安装 phalcon php 扩展
+```
+brew tap homebrew/homebrew-php
+brew install php56-phalcon
+```
+
+检查模块是否安装成功
+```
+# 注意: 新开一个终端
+php -i "(command-line 'phpinfo()')" | grep phalcon
+或
+php -m | grep phalcon
+```
+
+安装 Phalcon Devtools
+```
+cd ~/tools
+git clone https://github.com/phalcon/phalcon-devtools.git
+cd phalcon-devtools
+ln -s `pwd`/phalcon.php /usr/local/bin/phalcon
+chmod ugo+x /usr/local/bin/phalcon
+```
+
+测试 phalcon-devtools
+```
+phalcon
+
+Phalcon DevTools (3.0.2)
+
+Available commands:
+  info             (alias of: i)
+  commands         (alias of: list, enumerate)
+  controller       (alias of: create-controller)
+  module           (alias of: create-module)
+  model            (alias of: create-model)
+  all-models       (alias of: create-all-models)
+  project          (alias of: create-project)
+  scaffold         (alias of: create-scaffold)
+  migration        (alias of: create-migration)
+  webtools         (alias of: create-webtools)
+```
+
+
+配置 PhpStorm 的 Phalcon 代码提示扩展
+
+External Libraries >> Configure PHP Include Paths...
+
+点击Include Path 右侧的加号（+）
+
+找到 phalcon-devtools 目录：
+
+> /Users/zhanghe/tools/phalcon-devtools
+
+应用，保存
