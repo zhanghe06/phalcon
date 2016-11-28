@@ -55,10 +55,13 @@ memory_limit => 128M
 max_execution_time => 0
 ```
 
-修改文件上传大小限制, 需要配合修改 Nginx 配置
+修改文件上传大小限制
+
+通常需要配合修改 Nginx 配置(如果 Nginx 返回一个 413 Request Entity Too Large 的错误)
+
 ```
 # nginx.conf
-client_max_body_size 16m;
+client_max_body_size 16m;  # http{} 中添加此配置项
 # php.ini
 post_max_size => 16M
 upload_max_filesize => 16M
